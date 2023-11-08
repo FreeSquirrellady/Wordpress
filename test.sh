@@ -40,11 +40,12 @@
 #  
       #Wordpress installation
       echo "\n\033[34m Installing wordpress...\n"
-      wget https://wordpress.org/latest.zip
+       wget https://wordpress.org/latest.zip
       unzip latest.zip -d /var/www/html/
       wget https://github.com/FreeSquirrellady/Wordpress/blob/main/wp-config.php -P /var/www/html/wordpress/wp-config.php #downloading wp-config from github
       chown -R www-data:www-data /var/www/html/wordpress/
-#
+      sudo /usr/sbin/a2ensite wordpress.conf #making site enable
+      sudo systemctl reload apache2 
       echo "\n\033[34m Configuration nginx...\n"
       wget https://github.com/FreeSquirrellady/Wordpress/blob/main/myexample.com.conf -P /etc/nginx/sites-enabled/myexample.com.conf
       /sbin/nginx -t
