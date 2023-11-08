@@ -42,11 +42,10 @@
       echo "\n\033[34m Installing wordpress...\n"
       wget https://wordpress.org/latest.zip
       unzip latest.zip -d /var/www/html/
-      cp wp-config-sample.php wp-config.php #времянка, потомзаменить на выгрузку из гитхаба с готовым подключением к базе данных
+      wget https://github.com/FreeSquirrellady/Wordpress/blob/main/wp-config.php -P /var/www/html/wordpress/wp-config.php #downloading wp-config from github
       chown -R www-data:www-data /var/www/html/wordpress/
 #
       echo "\n\033[34m Configuration nginx...\n"
-      #Добавить выгрузку конфига из гитхаба
+      wget https://github.com/FreeSquirrellady/Wordpress/blob/main/myexample.com.conf -P /etc/nginx/sites-enabled/myexample.com.conf
       /sbin/nginx -t
       /sbin/nginx -s reload
-#
